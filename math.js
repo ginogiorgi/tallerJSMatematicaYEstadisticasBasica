@@ -41,6 +41,23 @@ function calcularTriangulo(lado1, lado2, base, altura){
         area: (base * altura) / 2,
     };
 };
+function calcularAlturaTriangulo(lado1, lado2, base){
+    if (lado1 == lado2 && base != lado1 && base != lado2){
+        return Math.sqrt((lado1 ** 2) - ((base ** 2)) / 4);
+    }else{
+        console.warn("Este no es un triangulo isoceles");
+    };
+};
+function calcularAlturaTrianguloEscaleno(lado1, lado2, lado3) {
+    if (lado1 != lado2 && lado1 != lado3 && lado2 != lado3) {
+      let S = (lado1 + lado2 + lado3) / 2;
+      return Math.trunc((2 / lado1) * Math.sqrt(S * (S - lado1) * (S - lado2) * (S - lado3)));
+    }
+    else {
+      return false;
+    }
+  }
+  
 
 console.groupEnd('triangulo');
 
