@@ -12,10 +12,11 @@ function esPar(lista){
 function calcularMediana(lista){
     const listaEsPar = esPar(lista);
     if (listaEsPar){
-
+        const indexMedianaPar = lista.length / 2;
+        return calcularPromedio([lista[indexMedianaPar], lista[indexMedianaPar - 1]]);
     }
     else {
         const indexMedianaImpar = Math.floor(lista.length / 2);
         return lista[indexMedianaImpar];
-    }
-}
+    };
+};
