@@ -10,6 +10,7 @@ function esPar(lista){
     return !(lista.length % 2);
 };
 function calcularMediana(lista){
+    ordenarLista(lista);
     const listaEsPar = esPar(lista);
     if (listaEsPar){
         const indexMedianaPar = lista.length / 2;
@@ -19,4 +20,8 @@ function calcularMediana(lista){
         const indexMedianaImpar = Math.floor(lista.length / 2);
         return lista[indexMedianaImpar];
     };
+};
+function ordenarLista(listaDesordenada){
+    const lista = listaDesordenada.sort((a, b) => a-b);
+    return lista;
 };
