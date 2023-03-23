@@ -1,4 +1,7 @@
-function calcularPromedio(lista) {
+const PlatziMath = {};
+
+
+PlatziMath.calcularPromedio = function calcularPromedio(lista) {
     const sumaLista = lista.reduce((valorAcumulado, nuevoValor) => {
         return valorAcumulado + nuevoValor;
     })
@@ -6,10 +9,10 @@ function calcularPromedio(lista) {
     const promedio = sumaLista / lista.length;
     return promedio;
 };   
-function esPar(lista){
+PlatziMath.esPar = function esPar(lista){
     return !(lista.length % 2);
 };
-function calcularMediana(lista){
+PlatziMath.calcularMediana = function calcularMediana(lista){
     ordenarLista(lista);
     const listaEsPar = esPar(lista);
     if (listaEsPar){
@@ -21,11 +24,11 @@ function calcularMediana(lista){
         return lista[indexMedianaImpar];
     };
 };
-function ordenarLista(listaDesordenada){
+PlatziMath.ordenarLista = function ordenarLista(listaDesordenada){
     const lista = listaDesordenada.sort((a, b) => a-b);
     return lista;
 };
-function calcularModa(lista) {
+PlatziMath.calcularModa = function calcularModa(lista) {
     const listaCount = {};
 
     for (let i = 0; i < lista.length; i++){
@@ -45,7 +48,19 @@ function calcularModa(lista) {
 
     return listaMaxNumber[0];
 };
-function ordenarListaBidimensional(listaDesordenada, i){
+PlatziMath.ordenarListaBidimensional = function ordenarListaBidimensional(listaDesordenada, i){
     const lista = listaDesordenada.sort((a, b) => a[i]-b[i]);
     return lista;
 };
+PlatziMath.mediaGeometrica = function mediaGeometrica(lista){
+    const multiplicacionLista = lista.reduce((a,b) => a*b);
+    return Math.pow(multiplicacionLista, 1 / lista.length);
+}
+PlatziMath.promedioPonderado = function promedioPonderado(lista){
+    const noteWithCredit = lista.map((element) => element.note * element.credit);
+    const sumNotesWithCredit = noteWithCredit.reduce((a,b) => a + b);
+    const credits = lista.map((element) => element.credit);
+    const sumOfCredits = credits.reduce((a,b) => a + b);
+
+    return sumNotesWithCredit / sumOfCredits;
+}
