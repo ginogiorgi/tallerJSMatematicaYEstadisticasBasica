@@ -1,4 +1,4 @@
-const empresas = {}
+let empresas = {}
 
 function encontrarPersonaPorId(idPersonaBuscada){
     return salarios.find(persona => persona.id == idPersonaBuscada);
@@ -8,8 +8,7 @@ function medianaPorId(idPersonaBuscada){
     const salarios = trabajos.map((elemento) => elemento.salario);
     return PlatziMath.calcularMediana(salarios);
 }
-
-function proyeccionPorPersona(idPersonaBuscada){
+function proyeccionPorIdPersona(idPersonaBuscada){
     let porcentajesCrecimiento = [];
     const trabajos = encontrarPersonaPorId(idPersonaBuscada).trabajos;
 
@@ -19,6 +18,7 @@ function proyeccionPorPersona(idPersonaBuscada){
     return trabajos[trabajos.length - 1].salario * PlatziMath.calcularMediana(porcentajesCrecimiento) + trabajos[trabajos.length - 1].salario;
 }
 function analisisEmpresarial(){
+    empresas = {}
     salarios.forEach((persona) => {
         persona.trabajos.forEach((trabajo) => {
             if (!empresas[trabajo.empresa]) {
@@ -31,4 +31,19 @@ function analisisEmpresarial(){
         });
     });
     return empresas;
+};
+function medianaPorAnoEmpresas(nombre, year){
+    analisisEmpresarial();
+    if (!empresas[nombre]){
+        console.warn('la empresa no existe');
+    } 
+    else if (!empresas[nombre][year]){
+        console.warn('Ese ano no esta registrado');
+    }
+    else {
+      return PlatziMath.calcularMediana(empresas[nombre][year]);
+    };
+};
+function proyeccionEmpresa(){
+    
 }
