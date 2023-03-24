@@ -13,11 +13,11 @@ PlatziMath.esPar = function esPar(lista){
     return !(lista.length % 2);
 };
 PlatziMath.calcularMediana = function calcularMediana(lista){
-    ordenarLista(lista);
-    const listaEsPar = esPar(lista);
+    PlatziMath.ordenarLista(lista);
+    const listaEsPar = PlatziMath.esPar(lista);
     if (listaEsPar){
         const indexMedianaPar = lista.length / 2;
-        return calcularPromedio([lista[indexMedianaPar], lista[indexMedianaPar - 1]]);
+        return PlatziMath.calcularPromedio([lista[indexMedianaPar], lista[indexMedianaPar - 1]]);
     }
     else {
         const indexMedianaImpar = Math.floor(lista.length / 2);
