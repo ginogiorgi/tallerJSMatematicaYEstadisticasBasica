@@ -44,6 +44,21 @@ function medianaPorAnoEmpresas(nombre, year){
       return PlatziMath.calcularMediana(empresas[nombre][year]);
     };
 };
-function proyeccionEmpresa(){
-    
-}
+function proyeccionEmpresa(nombre){
+    analisisEmpresarial();
+    if (!empresas[nombre]){
+        console.warn('la empresa no existe');
+    }
+    else {
+        const empresaYear = Object.keys(empresas[nombre]);
+        const listaMedianaYear = empresaYear.map((year) => {
+            return medianaPorAnoEmpresas(nombre, year);
+        });
+        let porcentajesCrecimiento = [];
+
+        for (let i = 1; i < listaMedianaYear.length; i++){
+            porcentajesCrecimiento.push((listaMedianaYear[i] - listaMedianaYear[i - 1]) / listaMedianaYear[i - 1]);
+        };
+        return listaMedianaYear[listaMedianaYear.length - 1] * PlatziMath.calcularMediana(porcentajesCrecimiento) + listaMedianaYear[listaMedianaYear.length - 1];
+    };
+};
