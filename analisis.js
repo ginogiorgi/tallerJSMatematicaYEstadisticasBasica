@@ -62,3 +62,16 @@ function proyeccionEmpresa(nombre){
         return listaMedianaYear[listaMedianaYear.length - 1] * PlatziMath.calcularMediana(porcentajesCrecimiento) + listaMedianaYear[listaMedianaYear.length - 1];
     };
 };
+
+function medianaGeneral(){
+    const listaMedianas = salarios.map(persona => medianaPorId(persona.id));
+    return PlatziMath.calcularMediana (listaMedianas);
+};
+function medianaTop10(){
+    const listaMedianas = salarios.map(persona => medianaPorId(persona.id));
+    const medianasOrdenadas = PlatziMath.ordenarLista(listaMedianas);
+    const cantidad = listaMedianas.length / 10;
+    const top10 = medianasOrdenadas.slice(listaMedianas.length - cantidad, listaMedianas.length);
+
+    return PlatziMath.calcularMediana(top10);
+}
